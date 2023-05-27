@@ -5,7 +5,7 @@ module.exports = {
             presets: [
                 // 解决页面报错问题
                 ["babel-preset-react-app", false],
-                "babel-preser-react-app/prod"
+                "babel-preset-react-app/prod"
             ]
         }
     }

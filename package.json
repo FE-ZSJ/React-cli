@@ -17,13 +17,11 @@
   ],
   "devDependencies": {
     "@babel/core": "^7.22.0",
-    "@babel/preset-env": "^7.22.0",
-    "@babel/preset-react": "^7.22.0",
+    "@pmmmwh/react-refresh-webpack-plugin": "^0.5.10",
     "babel-loader": "^9.1.2",
     "babel-preset-react-app": "^10.0.1",
     "cross-env": "^7.0.3",
     "css-loader": "^6.7.4",
-    "eslint-config": "^0.3.0",
     "eslint-config-react-app": "^7.0.1",
     "eslint-webpack-plugin": "^4.0.1",
     "html-webpack-plugin": "^5.5.1",
@@ -31,6 +29,7 @@
     "postcss-loader": "^7.3.1",
     "postcss-preset-env": "^8.4.1",
     "react-app": "^1.1.2",
+    "react-refresh": "^0.14.0",
     "sass": "^1.62.1",
     "sass-loader": "^13.3.0",
     "style-loader": "^3.3.3",
@@ -41,6 +40,7 @@
   },
   "dependencies": {
     "react": "^18.2.0",
-    "react-dom": "^18.2.0"
+    "react-dom": "^18.2.0",
+    "react-router-dom": "^6.11.2"
   }
 }

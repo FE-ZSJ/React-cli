@@ -1,6 +1,7 @@
 const path = require('path')
 const ESLintPlugin = require('eslint-webpack-plugin');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
+const ReactRefreshWebpackPlugin = require('@pmmmwh/react-refresh-webpack-plugin');
 
 // 返回处理样式loader的函数
 const getStyleLoaders = (pre) => {
@@ -24,7 +25,7 @@ module.exports = {
     output: { // 输出打包后的文件
         path: undefined, // 开发模式没有输出，也不需要清空
         filename: 'static/js/[name].js', //文件名，以chunk名称自动补全文件名，开发模式没写contenthash
-        chunkFilename: 'static/js/[name].chunk.ja', // 动态导入的chunk或node_module打包的chunk等，.chunk与入口模块进行区分
+        chunkFilename: 'static/js/[name].chunk.js', // 动态导入的chunk或node_module打包的chunk等，.chunk与入口模块进行区分
         assetModuleFilename: 'static/media/[hash:10][ext][query]', // 图片资源,ext文件扩展名,query其他参数
     },
     module: { // loader匹配规则
@@ -69,6 +70,7 @@ module.exports = {
                 options: {
                     cacheDirectory: true, // 开启babel编译缓存
                     cacheCompression: false, // 关闭压缩缓存
+                    plugins: ['react-refresh/babel'], // js的HMR
                 }
             }
         ]
@@ -84,6 +86,7 @@ module.exports = {
         new HtmlWebpackPlugin({
             template: path.resolve(__dirname, '../public/index.html')
         }),
+        new ReactRefreshWebpackPlugin() // js的HMR
     ],
     mode: 'development',// 开发环境
     devtool: "cheap-module-source-map", // 没有列映射
@@ -105,5 +108,6 @@ module.exports = {
         port: "8080", // 启动服务器端口号
         open: true, // 是否自动打开浏览器
         hot: true, // 开启HMR功能（只用于开发环境，生产环境不需要）
+        historyApiFallback: true, // 解决前端路由刷新404
     },
 }
